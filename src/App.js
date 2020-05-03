@@ -3,6 +3,7 @@ import Header from './Components/header';
 import 'bulma/css/bulma.css'
 import Formulario from './Components/formulario';
 import ClimaResumen from './Components/climaResumen';
+import Axios from 'axios';
 
 function App() {
   const handleOnChange = ((event) => {
@@ -19,9 +20,13 @@ function App() {
       const appId = "a2cbe60392d15d4b65e088757c604c14";
       const url = `http://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${appId}`
 
-      const request = await fetch(url);
+      /* const request = await fetch(url);
 
-      const response =  await request.json();
+      const response =  await request.json(); */
+
+      const request = await Axios(url);
+
+      const response = await request.data;
 
       guardaBusqueda({
         ...busqueda,
@@ -59,5 +64,5 @@ function App() {
     </Fragment>
   );
 }
-
+gi
 export default App;
